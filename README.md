@@ -9,8 +9,7 @@ This repository contains various **C++** gaming examples and projects that showc
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Code Samples](#code-samples)
-- [License](#license)
+
 
 ## Overview
 
