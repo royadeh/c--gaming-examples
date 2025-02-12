@@ -5,56 +5,54 @@
 
 using namespace std;
 
-class student{
-    public:
+class student {
+protected:
     string name;
     char level;
-    
-    void setName(string name){
-        this ->name = name;
+
+public:
+    // Constructor
+    student(string name, char level) {
+        this->name = name;
+        this->level = level;
     }
-    
-    void setLevel(char level){
-        this -> level = level;
-    }
-    
-    char getLevel()const{return this-> level;}
-    
-    void showDetails(){
+
+    // Get the level of the student
+    char getLevel() const { return this->level; }
+
+    void showDetails() {
         cout << "Name: " << name << endl;
-        cout << "Level: " << level << endl;  // Corrected the output here
+        cout << "Level: " << level << endl;
     }
 };
 
-class Undergraduate : public student{
-    public:
+class Undergraduate : public student {
+public:
     double CGPA;
-    
-    void setCGPA(double CGPA){
-        this -> CGPA = CGPA;
+
+    // Constructor that calls the base class constructor
+    Undergraduate(string _name, char _level, double _CGPA)
+        : student(_name, _level), CGPA(_CGPA) {}
+
+    void showDetails() {
+        student::showDetails();
+        cout << "CGPA: " << CGPA << endl;
     }
 };
 
-class Graduate : public student{
-    public:
+class Graduate : public student {
+public:
     string specialization;
-    
-    void setSpecialization(string specialization){
-        this -> specialization = specialization;
+
+    // Constructor that calls the base class constructor
+    Graduate(string _name, char _level, string _specialization)
+        : student(_name, _level), specialization(_specialization) {}
+
+    void showDetails() {
+        student::showDetails();
+        cout << "Specialization: " << specialization << endl;
     }
 };
-
-// void display(vector<Undergraduate> &students) {
-//     for (auto &student : students) {
-//         student.showDetails();
-//     }
-// }
-
-// void display(vector<Graduate> &students) {
-//     for (auto &student : students) {
-//         student.showDetails();
-//     }
-// }
 
 void display(vector<student *> &students) {
     int undergradCount = 0;
@@ -81,30 +79,24 @@ int main() {
     do {
         cout << "\nEnter Student's Full Name: ";
         getline(cin, name);
-        
+
         cout << "Enter Level of Student (G = Graduate, U = Undergraduate): ";
         cin >> level;
         level = toupper(level);
         cin.ignore(); // Clear the buffer
-        
+
         if (level == 'U') {
-            Undergraduate* undergraduate = new Undergraduate();
             double cgpa;
-            undergraduate->setName(name);
-            undergraduate->setLevel(level);
             cout << "Enter CGPA: ";
             cin >> cgpa;
-            undergraduate->setCGPA(cgpa);
+            Undergraduate* undergraduate = new Undergraduate(name, level, cgpa);  // Pass arguments to the constructor
             students.push_back(undergraduate);
-        }
-        else if (level == 'G') {
-            Graduate* graduate = new Graduate();
+        } else if (level == 'G') {
             string specialization;
-            graduate->setName(name);
-            graduate->setLevel(level);
             cout << "Enter Specialization: ";
+            cin.ignore(); // Clear the buffer before reading the string
             getline(cin, specialization);
-            graduate->setSpecialization(specialization);
+            Graduate* graduate = new Graduate(name, level, specialization);  // Pass arguments to the constructor
             students.push_back(graduate);
         }
 
