@@ -44,17 +44,17 @@ class Graduate : public student{
     }
 };
 
-void display(vector<Undergraduate> &students) {
-    for (auto &student : students) {
-        student.showDetails();
-    }
-}
+// void display(vector<Undergraduate> &students) {
+//     for (auto &student : students) {
+//         student.showDetails();
+//     }
+// }
 
-void display(vector<Graduate> &students) {
-    for (auto &student : students) {
-        student.showDetails();
-    }
-}
+// void display(vector<Graduate> &students) {
+//     for (auto &student : students) {
+//         student.showDetails();
+//     }
+// }
 
 void display(vector<student *> &students) {
     int undergradCount = 0;
