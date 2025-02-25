@@ -36,4 +36,4 @@ To start using the C++ code samples from this repository, follow the steps below
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/cpp-gaming-examples.git
+   git clone https://github.com/royadeh/c--gaming-examples.git
