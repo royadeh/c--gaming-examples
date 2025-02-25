@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <cctype>
+#include <cctype> //functions like toupper()
 
 using namespace std;
 
